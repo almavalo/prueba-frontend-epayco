@@ -1,7 +1,8 @@
 import { ItemList } from "../components/organisms/ItemList";
 import { useForm } from 'react-hook-form';
-import { useItems } from '../../hooks/useItems';
-import { useAddItem } from '../../hooks/useAddItem';
+import { useItems } from "../hooks/useItems";
+import { useAddItem } from "../hooks/useAddItem";
+
 
 export const Home = () => {
   const { data: items, error, isLoading } = useItems();
