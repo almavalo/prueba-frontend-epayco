@@ -17,11 +17,11 @@ export const ItemForm = ({
   errors: ReturnType<typeof useForm<Item>>["formState"]["errors"];
 }) => {
   return (
-    <section className="relative w-full px-52 py-12 overflow-hidden">
+    <section className="relative w-full px-4 sm:px-6 lg:px-20 py-10 overflow-hidden">
       <div className="absolute inset-0 bg-[url('/src/assets/tecno.jpg')] bg-no-repeat bg-cover bg-center opacity-25 z-0" />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="relative z-10 flex flex-col w-full gap-4"
+        className="relative z-10 flex flex-col w-full max-w-2xl mx-auto gap-6"
       >
         <Header title="Add New Item" position="text-left" size="text-lg" />
         <Input register={register} errors={errors} />

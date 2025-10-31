@@ -12,7 +12,7 @@ export const StatusView = ({
   >
     <h1
       className={`text-3xl font-mono font-bold ${
-        isLoading ? "text-gray-900" : "text-red-600"
+        isLoading ? "text-[#870412]" : "text-red-600"
       }`}
     >
       {isLoading ? "Loading..." : `Error: ${error?.message}`}
