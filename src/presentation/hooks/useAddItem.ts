@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { addItem } from "../../infrastructure/addItems";
+import { addItem } from "../../domain/addItems";
+
 
 export const useAddItem = () => {
   const queryClient = useQueryClient();
