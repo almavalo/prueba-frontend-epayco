@@ -26,6 +26,10 @@ export const Home = () => {
     mutation.mutate(data);
     reset();
   };
+
+  const handleBack = () => {
+    setNewItem(null)
+  }
   
 if (isLoading || error) return <StatusView isLoading={isLoading} error={error} />;
 
@@ -39,7 +43,7 @@ if (isLoading || error) return <StatusView isLoading={isLoading} error={error} /
           onSubmit={onSubmit}
           errors={errors}
         />
-        <ItemList items={newItem ? [newItem] : items ?? []} />
+       <ItemList items={newItem ? [newItem] : items ?? []} onBack={newItem ? handleBack : undefined} />
       </article>
     </div>
   );
