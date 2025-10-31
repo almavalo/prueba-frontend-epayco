@@ -1,12 +1,12 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { addItem } from "../../domain/addItems";
+import { Item } from "../../infrastructure/Item";
 
 
-export const useAddItem = () => {
-  const queryClient = useQueryClient();
-  return useMutation(addItem, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('items');
+export const useAddItem = (onSuccessCallback: (item: Item) => void) => {
+  return useMutation<Item, Error, Item>(addItem, {
+    onSuccess: (data) => {
+      onSuccessCallback(data)
     },
   });
 };
