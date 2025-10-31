@@ -1,24 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
 
 import './index.css';
 import { Home } from './presentation/pages/Home';
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  return (
+const App = () => (
+  <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Home />
     </QueryClientProvider>
-  );
-};
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<App />);
