@@ -1,24 +1,25 @@
-import { useForm } from "react-hook-form";
+import { RegisterOptions, UseFormRegister, FieldErrors } from "react-hook-form";
 import { Item } from "../../../infrastructure/Item";
 
+interface InputProps {
+  name: keyof Item;
+  placeholder?: string;
+  register: UseFormRegister<Item>;
+  errors: FieldErrors<Item>;
+  validation?: RegisterOptions<Item, keyof Item>;
+}
 export const Input = ({
+  name,
+  placeholder = "Type here...",
   register,
   errors,
-}: {
-  register: ReturnType<typeof useForm<Item>>["register"];
-  errors: ReturnType<typeof useForm<Item>>["formState"]["errors"];
-}) => {
+  validation,
+}: InputProps) => {
   return (
     <section className="w-full">
-      <input
-        {...register("title", {
-          required: "El título es obligatorio",
-          minLength: {
-            value: 3,
-            message: "Debe tener al menos 3 caracteres",
-          },
-        })}
-        placeholder="Title"
+       <input
+        {...register(name, validation)}
+        placeholder={placeholder}
         className="w-full border border-[#870412] bg-transparent rounded-md p-2 text-lg focus:outline-none focus:border-gray-900"
       />
       {errors.title && (

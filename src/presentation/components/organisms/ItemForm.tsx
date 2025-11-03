@@ -24,8 +24,30 @@ export const ItemForm = ({
         className="relative z-10 flex flex-col w-full max-w-2xl mx-auto gap-6"
       >
         <Header title="Add New Item" position="text-left" size="text-lg" />
-        <Input register={register} errors={errors} />
-        <TextArea register={register} errors={errors} />
+        <Input
+          name="title"
+          placeholder="Item title"
+          register={register}
+          errors={errors}
+          validation={{
+            required: "The title is required.",
+            minLength: {
+              value: 3,
+              message: "It must have at least 3 characters.",
+            },
+          }}
+        />
+        <TextArea name="body"
+          placeholder="Body"
+          register={register}
+          errors={errors}
+          validation={{
+            required: "The body is required.",
+            minLength: {
+              value: 10,
+              message: "It must have at least 10 characters.",
+            },
+          }} />
         <Button label="Add Item" />
       </form>
     </section>
